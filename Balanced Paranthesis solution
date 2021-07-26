@@ -1,0 +1,10 @@
+def longest_balanced(string):
+     stack,long = [],0
+     for i in range(len(string)): 
+         if string[i] == '(': 
+             stack.append(i)
+         elif len(stack)!=0:
+             length = i-stack[-1]+1
+             stack.pop()
+             if length >long : long = length
+     return long 

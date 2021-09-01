@@ -1,0 +1,15 @@
+class Tree:
+  def __init__(self, value, *children):
+    self.value  = value 
+    self.children = children 
+def recurse(current, parent_value=0, parent_path_length=0):
+      if current.value== parent_value +1:
+          current_path_length = parent_path_length+1 
+      else:
+          current_path_length=1
+      yield current_path_length
+      for child in current.children:
+          for value in recurse(child, current.value, current_path_length):
+              yield value 
+def longest_path(tree):
+  return max(recurse(tree))
